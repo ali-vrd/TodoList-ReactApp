@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import "./styles/main.css";
+import { RiDeleteBin5Fill } from 'react-icons/ri';
+import { BiUndo } from 'react-icons/bi';
+import { MdDoneOutline } from 'react-icons/md';
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -10,7 +14,7 @@ function TodoList() {
       alert('Please enter a todo!');
       return;
     }
-    setTodos([...todos, {text: newTodo, done: false}]);
+    setTodos([...todos, { text: newTodo, done: false }]);
     setNewTodo('');
   };
 
@@ -33,26 +37,36 @@ function TodoList() {
   };
 
   return (
-    <div>
-      <h1>Todo List</h1>
+    <div className='All'>
+      <h1>Please Add your Tasks !</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-        />
-        <button type="submit">Add Todo</button>
+        <div className='c1'>
+          <input
+            placeholder='Add a Todo...'
+            type="text"
+            value={newTodo}
+            onChange={(e) => setNewTodo(e.target.value)}
+          />
+          <button type="submit">Add</button>
+        </div>
+
       </form>
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>
-            {todo.done ? <del>{todo.text}</del> : todo.text}
-            <button onClick={() => handleDone(index)}>
-              {todo.done ? 'Undone' : 'Done'}
-            </button>
-            <button onClick={() => handleDelete(index)}>
-              Delete
-            </button>
+            <div className='c2'>
+              {todo.done ? <del>{todo.text}</del> : todo.text}
+              <div className='c2-1'>
+                <div onClick={() => handleDone(index)}>
+                  {todo.done ? <BiUndo /> : <MdDoneOutline />}
+                </div>
+                <div onClick={() => handleDelete(index)}>
+                  <RiDeleteBin5Fill />
+                </div>
+              </div>
+
+            </div>
+
           </li>
         ))}
       </ul>
