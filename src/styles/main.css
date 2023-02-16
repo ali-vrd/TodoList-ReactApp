@@ -7,13 +7,6 @@ body {
 }
 
 .All {
-    border: 2px solid black;
-    border-bottom: none;
-    box-shadow: 0 0 0 3px rgba(66, 72, 73, 0.3);
-    padding-top: 30px;
-    padding-bottom: 200px;
-    padding-left: 200px;
-    padding-right: 200px;
     animation: slide-in 2s ease-out;
 }
 
